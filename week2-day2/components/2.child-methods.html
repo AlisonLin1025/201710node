@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <loading ref="load"></loading>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    // 父组件调用子组件的方法
+    let loading = {
+          data(){
+              return {flag:true}
+          },
+          template:'<div v-show="flag">疯狂加载中。。。</div>',
+          methods:{
+              hide(){
+                  this.flag = false;
+              }
+          }
+    };
+    let vm = new Vue({
+        el:'#app',
+        mounted(){ // ref 如果放在组件上 获取的是组件的实例 并不是组件的dom元素
+              // this.$refs.load.hide()
+              // this.$refs.load.$el.style.background = 'red'
+        },
+        data:{},
+        components:{
+          loading
+        }
+    })
+</script>
+</body>
+</html>
+

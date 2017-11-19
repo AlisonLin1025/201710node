@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--如果用对象作为to的属性，并且使用了参数 必须给路由起个名字，通过名字跳转-->
+    <router-link :to="{name:'pro',params:{c:1,a:2}}">商品1</router-link>
+    <router-link to="/article/2/b">商品2</router-link>
+    <router-link to="/article/3/c">商品3</router-link>
+    <router-view></router-view>
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    let article = {
+        template:'<div>第 {{$route.params.c}} 篇文章</div>',
+        created(){ // 默认调用一次created
+            alert('来个ajax');
+        },
+        watch:{ // 路径参数发生变化 监控参数的变化来发送ajax
+            $route(){
+                alert('来个ajax');
+            }
+        }
+    };
+    let routes = [
+        {path:'/article/:c/:a',component:article,name:'pro'}
+    ];
+    let router = new VueRouter({
+        routes
+    });
+    let vm = new Vue({
+        el:'#app',
+        router
+    })
+</script>
+</body>
+</html>
+
