@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>珠峰培训 http://www.zhufengpeixun.cn</title>
+</head>
+<body>
+<script>
+    let template = function (username,password) {
+        return `<li class="list-group-item">
+                  用户名:${username}  密码:${password}
+              </li>`;
+    };
+    let oDiv = document.createElement('div');
+    oDiv.innerHTML = template(111,2222);
+    console.log(oDiv.childNodes);
+    document.body.appendChild(oDiv.firstElementChild)
+</script>
+</body>
+</html>

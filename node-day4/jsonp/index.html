@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>珠峰培训 http://www.zhufengpeixun.cn</title>
+
+</head>
+<body>
+<script>
+  // 必须是一个全局函数
+  function c(data) {
+      console.log(data);
+  }
+  let oScript = document.createElement('script');
+  oScript.src = 'http://localhost:3000/jsonp?cb=c';
+  document.body.appendChild(oScript)
+</script>
+
+<!--webstorm端口是63342  server:3000-->
+<!--jsonp script没有跨域的问题  jsonp和ajax json jsonp 没关系-->
+</body>
+</html>

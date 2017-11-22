@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta >
+  <title>珠峰培训 http://www.zhufengpeixun.cn</title>
+  <!--不支持../路径 ./路径-->
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+<div id="clock"></div>
+<script>
+  // 跨域：协议 端口号 域名 有一个不相同就是跨域
+  // fetch 基于promise的
+  fetch('/clock',{
+      method:'GET'
+  }).then(function (res) {
+      return res.json(); // 转成想要的结果 JSON.parse()
+  }).then(function (data) {
+      clock.innerHTML = data.time;
+  });
+  /*setInterval(()=>{
+      let xhr = new XMLHttpRequest();
+      xhr.open('get','/clock',true);
+      xhr.onload = function () {
+          if(this.status == 200){
+              clock.innerHTML = xhr.response
+          }
+      };
+      xhr.send();
+  },1000)*/
+
+</script>
+</body>
+</html>
